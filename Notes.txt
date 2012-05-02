@@ -1,0 +1,26 @@
+
+
+Observables
+	Observables tell you when they change. Talk about how they get auto-wired. Demo?
+	- Standard
+		Show syntax. Can be any type.
+	- Arrays
+		Show syntax. Wrapper around array. Notifies when contents of array changes.
+	- Computed
+		Composes multiple arrays. Talk about observable chaining.
+
+Bindings
+	Link observables (and objects) to the DOM. Two-way binding on observables.
+	Go over basic bindings:
+	- Appearance
+	- Control Flow
+	- Forms
+	- Templating
+		Talk about Jim's external templates
+
+Integration
+	Mapping plugin
+	Custom bindings
+	ToJSON
+
+Rewriting some jQuery anti-patterns using binding and observables for fun and profit!

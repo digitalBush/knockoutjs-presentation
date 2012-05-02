@@ -1,0 +1,23 @@
+Pizza Demo
+==========
+
+Main screen has:
+ * list of orders outstanding
+ * button to place order
+
+Placing an order requires:
+ * customer name
+ * select pizza type (cheese,pepperoni,supreme,meat lovers)
+ * select size (S,M,L,XL)
+
+Order screen will tally pizza order and show price.
+
+Order list has buttons to:
+* Ready (If New)
+* Checkout (If Ready)
+* Cancel (If New)
+
+Order can be cancelled until they are in oven.
+
+
+

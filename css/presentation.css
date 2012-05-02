@@ -1,0 +1,66 @@
+#intro{
+	padding-top:260px;
+	width:900px;
+	height:700px;
+}
+
+#intro h1 {
+	font-size: 100px;
+	line-height: 120px;
+}
+
+#intro p{
+	font-size:30px;
+	color:#842B28;
+}
+
+#intro footer{
+	position:absolute;
+	bottom:20px;
+	right:20px;
+}
+
+/* Masthead (docs home) */
+.slide {
+  padding-top: 36px;
+  margin-bottom: 72px;
+}
+.slide header,
+.slide p {
+  text-align: center;
+}
+.slide header {
+  margin-bottom: 18px;
+  font-size: 81px;
+  font-weight: bold;
+  letter-spacing: -1px;
+  line-height: 1;
+}
+
+.slide footer{
+	position:absolute;
+	bottom:0;
+	left:0;
+	right:0;
+	height:250px;
+	text-align:center;
+}
+
+.slide p {
+  margin-left: 5%;
+  margin-right: 5%;
+  font-size: 30px;
+  line-height: 36px;
+}
+
+.slide li{
+	line-height:40px;
+}
+
+pre.prettyprint{
+	width:900px;
+	padding:36px;
+	font-size:30px;
+	line-height:40px;
+	margin:0;
+}
