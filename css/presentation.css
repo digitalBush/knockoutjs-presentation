@@ -64,3 +64,42 @@ pre.prettyprint{
 	line-height:40px;
 	margin:0;
 }
+
+/*
+.slide.present header {
+	-webkit-transition: 0.5s;
+    -moz-transition:    0.5s;
+    -ms-transition:     0.5s;
+    -o-transition:      0.5s;
+    transition:         0.5s;
+	-webkit-transform: scale(1.2);
+}
+
+.slide.present header {
+	-webkit-transition-delay: 5s;
+	-webkit-transform: scale(1.0);
+}*/
+
+@-webkit-keyframes fun {
+	0%   {}
+	33%  {-webkit-transform: rotate(-10deg);}
+	66% {-webkit-transform: rotate(10deg);}
+	100% {-webkit-transform: rotate(0deg);}
+}
+
+#intro.present strong{
+	display:inline-block;
+	-webkit-animation: fun 3s infinite;
+}
+
+@-webkit-keyframes header {
+	0%   {}
+	50%  {-webkit-transform: scale(1.2);}
+	100% {-webkit-transform: scale(1.0);}
+}
+
+.slide.present header{
+	-webkit-animation: header 3s;
+}
+
+
