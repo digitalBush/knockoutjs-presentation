@@ -93,13 +93,12 @@ pre.prettyprint{
 }
 
 @-webkit-keyframes header {
-	0%   {}
-	50%  {-webkit-transform: scale(1.2);}
+	50%  {-webkit-transform: scale(1.1);}
 	100% {-webkit-transform: scale(1.0);}
 }
 
 .slide.present header{
-	-webkit-animation: header 3s;
+	-webkit-animation: header 2s;
 }
 
 
