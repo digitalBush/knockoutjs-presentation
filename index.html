@@ -233,9 +233,10 @@ var viewModel={
                 ko.applyBindings(viewModel,document.getElementById('text-binding'));
             })()
         </script>
-    </div>    
+    </div> 
 
-        <div id="value-binding" class="step demo" data-x="-5000" data-y="10000" data-scale=5>
+
+    <div id="value-binding" class="step demo" data-x="-5000" data-y="10000" data-scale=5>
         <header>Value Binding</header>
         <pre class="prettyprint code">
 var viewModel={
@@ -249,7 +250,15 @@ var viewModel={
 &lt;/div>
         </pre>
         <div class='result'>
-            <input data-bind="value:Test" />
+            <form class="form-horizontal">
+                <div class="control-group">
+                  <label class="control-label" for="input01">Text input</label>
+                  <div class="controls">
+                    <input class="input-xlarge" data-bind="value:Test" />
+                  </div>
+                </div>
+                
+            </form>
             <div data-bind="text:Test">
                 Starts with something else
             </div>
@@ -277,7 +286,12 @@ var viewModel={
 &lt;div data-bind="visible:IsActive">Yep, it's active!&lt;/div>
         </pre>
         <div class='result'>
-            <label>Is Active?</label><input type="checkbox" data-bind="checked:IsActive" />
+            <form>
+                <label class='checkbox'>
+                    <input type="checkbox" data-bind="checked:IsActive" />
+                    Is Active?
+                </label>
+            </form>
             <div data-bind="visible:IsActive">Yep, it's active!</div>
         </div>
         <script>
@@ -305,9 +319,11 @@ var viewModel={
 &lt;div data-bind="visible:Balance() &lt; 0">Overdrawn!&lt;/div>
         </pre>
         <div class='result'>
+            <form>
             <label>Current Balance:</label><input data-bind="value:Balance" />
-            <div data-bind="visible:Balance() >=0 && Balance()<20">Low Balance!</div>
-            <div data-bind="visible:Balance() < 0">Overdrawn!</div>
+            </form>
+            <div data-bind="visible:Balance() >=0 && Balance()&lt;20">Low Balance!</div>
+            <div data-bind="visible:Balance() &lt; 0">Overdrawn!</div>
         </div>
         <script>
             (function(){
