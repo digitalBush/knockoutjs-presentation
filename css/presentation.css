@@ -24,6 +24,7 @@
 .slide {
   padding-top: 36px;
   margin-bottom: 72px;
+  overflow:hidden;
 }
 .slide header,
 .slide p {
@@ -82,23 +83,14 @@ pre.prettyprint{
 
 @-webkit-keyframes fun {
 	0%   {}
-	33%  {-webkit-transform: rotate(-10deg);}
-	66% {-webkit-transform: rotate(10deg);}
+	33%  {-webkit-transform: rotate(-18deg);}
+	66% {-webkit-transform: rotate(18deg);}
 	100% {-webkit-transform: rotate(0deg);}
 }
 
 #intro.present strong{
 	display:inline-block;
 	-webkit-animation: fun 3s infinite;
-}
-
-@-webkit-keyframes header {
-	50%  {-webkit-transform: scale(1.1);}
-	100% {-webkit-transform: scale(1.0);}
-}
-
-.slide.present header{
-	-webkit-animation: header 2s;
 }
 
 

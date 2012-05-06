@@ -181,7 +181,7 @@ var items=ko.Tags();
 
 
 
-    <div id="observable-array-example-2" class="step" data-x="-5000" data-y="0" data-z="1000" data-rotate-x="90" data-scale=1>
+    <div id="observable-array-example-2" class="step" data-x="-5000" data-y="0" data-z="-1000" data-rotate-x="90" data-scale=1>
         <header>Manipulating Observable Array Items</header>
         <pre class='prettyprint'>
 //New item on the end
@@ -198,7 +198,7 @@ viewModel.Tags.shift();
         </pre>
     </div>
 
-    <div id="observable-array-example-3" class="step" data-x="-5000" data-y="0" data-z="2000" data-rotate-x="90" data-scale=1>
+    <div id="observable-array-example-3" class="step" data-x="-5000" data-y="0" data-z="-2000" data-rotate-x="90" data-scale=1>
         <header>It keeps going...</header>
         <pre class='prettyprint'>
 //Reverse
@@ -233,7 +233,7 @@ viewModel.Tax=ko.computed(function(){
         </pre>
     </div>
 
-    <div id="computed-observable-example-cont" class="step" data-x="0" data-y="0" data-z=1000 data-rotate-x="90" >
+    <div id="computed-observable-example-cont" class="step" data-x="0" data-y="0" data-z="-1000" data-rotate-x="90" >
         <header>You can write to them too!</header>
         <pre class='prettyprint'>
 viewModel.Total=ko.computed({
@@ -246,6 +246,18 @@ viewModel.Total=ko.computed({
     owner: viewModel
 },viewModel);
         </pre>
+    </div>
+
+    <div id="data-bind" class="step slide" data-x="-10000" data-y="5000" data-scale=5>
+        <header>data-bind=""</header>
+        <ul>
+            <li>How you wire up your object model to the DOM.</li>
+            <li>If it's not simple, you're doing it wrong.™</li>
+        </ul>
+        <p>
+            <img src='img/haters.gif' />
+        </p>
+
     </div>
 
     
