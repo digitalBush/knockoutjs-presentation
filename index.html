@@ -20,6 +20,8 @@
     
     <link rel="shortcut icon" href="favicon.png" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <script src="demo/lib/jQuery/jquery.min.js"></script>
+    <script src="demo/lib/knockout/knockout-2.0.0.js"></script>
 </head>
 <body class="impress-not-supported">
 
@@ -260,6 +262,35 @@ viewModel.Total=ko.computed({
 
     </div>
 
+    <div id="text-biding" class="step demo" data-x="-10000" data-y="10000" data-scale=5>
+        <header>Text Binding</header>
+        <pre class="prettyprint code">
+var viewModel={
+    ko.observable("Text")
+};
+        </pre>
+        <pre class="prettyprint markup">
+&lt;div data-bind="text:Test">
+    Starts with something else
+&lt;/div>
+        </pre>
+        <div class='result'>
+            <div data-bind="text:Test">
+                Starts with something else
+            </div>
+        </div>
+        <script>
+            (function(){
+                var viewModel={
+                    Test:ko.observable("Text")
+                };
+                ko.applyBindings(viewModel,document.getElementById('text-biding'));
+            })()
+        </script>
+
+
+    </div>    
+
     
     <!--
         
@@ -301,6 +332,9 @@ viewModel.Total=ko.computed({
 <script>
     impress().init();
     prettyPrint();
+    $("pre.code").append("<div class='desc'>Code</div>");
+    $("pre.markup").append("<div class='desc'>Markup</div>")
+    $(".result").append("<div class='desc'>Result</div>");
 </script>
 
 <!--
