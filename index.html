@@ -300,6 +300,7 @@ var viewModel={
         <pre class="prettyprint markup">
 &lt;label>Current Balance:&lt;/label>
 &lt;input data-bind="value:Balance" />
+&lt;!-- What comes next is NOT good -->
 &lt;div data-bind="visible:Balance() >=0 && Balance()<20">Low Balance!&lt;/div>
 &lt;div data-bind="visible:Balance() &lt; 0">Overdrawn!&lt;/div>
         </pre>
@@ -317,6 +318,18 @@ var viewModel={
             })()
         </script>
     </div> 
+
+    <div id="data-bind-the-rest" class="step slide" data-x="0" data-y="5000" data-scale=5>
+        <header>There's WAY more</header>
+            <ul>
+                <li>html</li><li>css</li><li>style</li><li>attr</li>
+                <li>foreach</li><li>if</li><li>ifnot</li><li>with</li>
+                <li>click</li><li>event</li><li>submit</li><li>enable</li><li>disable</li><li>hasFocus</li><li>options</li><li>selectedOptions</li><li>uniqueName</li>
+                <li>template</li>
+            </ul>
+
+
+    </div>
 
     
     <div id="overview" class="step" data-x="0" data-y="0" data-scale="20">

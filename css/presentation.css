@@ -114,4 +114,10 @@ pre.prettyprint{
 	-webkit-animation: fun 3s infinite;
 }
 
+#data-bind-the-rest li{
+	float:left; 
+	padding:10px 20px 10px 0;
+	margin-right:40px;
+}
+
 
