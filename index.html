@@ -212,8 +212,8 @@ viewModel.Total=ko.computed({
         <header>Text Binding</header>
         <pre class="prettyprint code">
 var viewModel={
-    ko.observable("Text")
-};
+    Test:ko.observable("Text")
+};  
         </pre>
         <pre class="prettyprint markup">
 &lt;div data-bind="text:Test">
@@ -239,7 +239,7 @@ var viewModel={
         <header>Value Binding</header>
         <pre class="prettyprint code">
 var viewModel={
-    ko.observable("Text")
+    Test:ko.observable("Text")
 };
         </pre>
         <pre class="prettyprint markup">
@@ -260,6 +260,60 @@ var viewModel={
                     Test:ko.observable("Text")
                 };
                 ko.applyBindings(viewModel,document.getElementById('value-binding'));
+            })()
+        </script>
+    </div> 
+
+    <div id="checked-and-visible-bindings" class="step demo" data-x="0" data-y="10000" data-scale=5>
+        <header>Checked and Visible Bindings</header>
+        <pre class="prettyprint code">
+var viewModel={
+    IsActive:ko.observable(true)
+};
+        </pre>
+        <pre class="prettyprint markup">
+&lt;label>Is Active?</label>
+&lt;input type="checkbox" data-bind="checked:IsActive" />
+&lt;div data-bind="visible:IsActive">Yep, it's active!&lt;/div>
+        </pre>
+        <div class='result'>
+            <label>Is Active?</label><input type="checkbox" data-bind="checked:IsActive" />
+            <div data-bind="visible:IsActive">Yep, it's active!</div>
+        </div>
+        <script>
+            (function(){
+                var viewModel={
+                    IsActive:ko.observable(true)
+                };
+                ko.applyBindings(viewModel,document.getElementById('checked-and-visible-bindings'));
+            })()
+        </script>
+    </div> 
+
+    <div id="no-suck" class="step demo" data-x="0" data-y="10000" data-rotate-x="90" >
+        <header>Remember the haters?</header>
+        <pre class="prettyprint code">
+var viewModel={
+    Balance:ko.observable(20.00)
+};
+        </pre>
+        <pre class="prettyprint markup">
+&lt;label>Current Balance:&lt;/label>
+&lt;input data-bind="value:Balance" />
+&lt;div data-bind="visible:Balance() >=0 && Balance()<20">Low Balance!&lt;/div>
+&lt;div data-bind="visible:Balance() &lt; 0">Overdrawn!&lt;/div>
+        </pre>
+        <div class='result'>
+            <label>Current Balance:</label><input data-bind="value:Balance" />
+            <div data-bind="visible:Balance() >=0 && Balance()<20">Low Balance!</div>
+            <div data-bind="visible:Balance() < 0">Overdrawn!</div>
+        </div>
+        <script>
+            (function(){
+                var viewModel={
+                    Balance:ko.observable(20.00)
+                };
+                ko.applyBindings(viewModel,document.getElementById('no-suck'));
             })()
         </script>
     </div> 
