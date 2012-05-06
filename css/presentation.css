@@ -68,12 +68,12 @@ pre.prettyprint{
 }
 
 .demo{
-	width:1200px;
+	width:1000px;
 }
 
 .demo pre{
 	float:left;
-	width:500px;
+	width:400px;
 	margin-bottom:10px;
 	font-size:20px;
 	line-height:24px;

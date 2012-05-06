@@ -208,7 +208,7 @@ viewModel.Total=ko.computed({
 
     </div>
 
-    <div id="text-biding" class="step demo" data-x="-10000" data-y="10000" data-scale=5>
+    <div id="text-binding" class="step demo" data-x="-10000" data-y="10000" data-scale=5>
         <header>Text Binding</header>
         <pre class="prettyprint code">
 var viewModel={
@@ -230,12 +230,39 @@ var viewModel={
                 var viewModel={
                     Test:ko.observable("Text")
                 };
-                ko.applyBindings(viewModel,document.getElementById('text-biding'));
+                ko.applyBindings(viewModel,document.getElementById('text-binding'));
             })()
         </script>
-
-
     </div>    
+
+        <div id="value-binding" class="step demo" data-x="-5000" data-y="10000" data-scale=5>
+        <header>Value Binding</header>
+        <pre class="prettyprint code">
+var viewModel={
+    ko.observable("Text")
+};
+        </pre>
+        <pre class="prettyprint markup">
+&lt;input data-bind="value:Test" />
+&lt;div data-bind="text:Test">
+    Starts with something else
+&lt;/div>
+        </pre>
+        <div class='result'>
+            <input data-bind="value:Test" />
+            <div data-bind="text:Test">
+                Starts with something else
+            </div>
+        </div>
+        <script>
+            (function(){
+                var viewModel={
+                    Test:ko.observable("Text")
+                };
+                ko.applyBindings(viewModel,document.getElementById('value-binding'));
+            })()
+        </script>
+    </div> 
 
     
     <div id="overview" class="step" data-x="0" data-y="0" data-scale="20">
