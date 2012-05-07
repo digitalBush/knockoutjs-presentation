@@ -34,13 +34,13 @@
 
 <div id="impress">
 
-    <div id="intro" class="step" data-x="-10000" data-y="-5000" data-scale=5>
+    <div id="intro" class="step" data-x="0" data-y="-12000" data-scale=10>
         <h1>Knockout.js</h1>
         <p>Javascript should be <strong>fun</strong></p>
         <footer>Josh Bush</footer>
     </div>
 
-    <div id="about-me" class="step slide container" data-x="-5000" data-y="-5000" data-scale=5>
+    <div id="about-me" class="step slide container" data-x="-2500" data-y="-5000" data-scale=5>
         <header>Who is this guy?</header>
         <p>
             Husband, Father, Developer. 
@@ -59,7 +59,7 @@
         </footer>
     </div>
 
-    <div id="knockout" class="step slide" data-x="0" data-y="-5000" data-scale=5>
+    <div id="knockout" class="step slide" data-x="2500" data-y="-5000" data-scale=5>
         <header>The Goal</header>
         <ul>
             <li> Define simple javascript models. </li>
@@ -71,7 +71,7 @@
         </p>
     </div>
 
-    <div id="observable" class="step slide" data-x="-10000" data-y="0" data-scale=5>
+    <div id="observable" class="step slide" data-x="-5000" data-y="0" data-scale=5>
         <header>Observable</header>
         <ul>
             <li>Subscribe with a callback.</li>
@@ -82,7 +82,7 @@
         </p>
     </div>
 
-    <div id="observable-example" class="step" data-x="-10000" data-y="0" data-rotate-x="90" >
+    <div id="observable-example" class="step" data-x="-5000" data-y="0" data-rotate-x="90" >
         <header>Observable Example</header>
         <pre class='prettyprint'>
 //Construction            
@@ -98,7 +98,7 @@ var who = ko.Name();
         </pre>
     </div>
 
-    <div id="observable-array" class="step slide" data-x="-5000" data-y="0" data-scale=5 >
+    <div id="observable-array" class="step slide" data-x="0" data-y="0" data-scale=5 >
         <header>Observable Array</header>
         <ul>
             <li>Subscribe with a callback.</li>
@@ -110,7 +110,7 @@ var who = ko.Name();
         </p>
     </div>
 
-    <div id="observable-array-example" class="step" data-x="-5000" data-y="0" data-rotate-x="90" data-scale=1>
+    <div id="observable-array-example" class="step" data-x="0" data-y="0" data-rotate-x="90" data-scale=1>
         <header>Observable Array Example</header>
         <pre class='prettyprint'>
 //Construction            
@@ -129,7 +129,7 @@ var items=ko.Tags();
 
 
 
-    <div id="observable-array-example-2" class="step" data-x="-5000" data-y="0" data-z="-1000" data-rotate-x="90" data-scale=1>
+    <div id="observable-array-example-2" class="step" data-x="0" data-y="0" data-z="-1000" data-rotate-x="90" data-scale=1>
         <header>Manipulating Observable Array Items</header>
         <pre class='prettyprint'>
 //New item on the end
@@ -146,7 +146,7 @@ viewModel.Tags.shift();
         </pre>
     </div>
 
-    <div id="observable-array-example-3" class="step" data-x="-5000" data-y="0" data-z="-2000" data-rotate-x="90" data-scale=1>
+    <div id="observable-array-example-3" class="step" data-x="0" data-y="0" data-z="-2000" data-rotate-x="90" data-scale=1>
         <header>It keeps going...</header>
         <pre class='prettyprint'>
 //Reverse
@@ -157,7 +157,7 @@ viewModel.Tags.sort();
         </pre>
     </div>
 
-    <div id="computed-observable" class="step slide" data-x="0" data-y="0" data-scale=5>
+    <div id="computed-observable" class="step slide" data-x="5000" data-y="0" data-scale=5>
         <header>Computed Observable</header>
         <ul>
             <li>Define a function to compose other observable value(s)</li>
@@ -168,7 +168,7 @@ viewModel.Tags.sort();
         </p>
     </div>
 
-    <div id="computed-observable-example" class="step" data-x="0" data-y="0" data-rotate-x="90" >
+    <div id="computed-observable-example" class="step" data-x="5000" data-y="0" data-rotate-x="90" >
         <header>Computed Observable Example</header>
         <pre class='prettyprint'>
 var viewModel={
@@ -181,7 +181,7 @@ viewModel.Tax=ko.computed(function(){
         </pre>
     </div>
 
-    <div id="computed-observable-example-cont" class="step" data-x="0" data-y="0" data-z="-1000" data-rotate-x="90" >
+    <div id="computed-observable-example-cont" class="step" data-x="5000" data-y="0" data-z="-1000" data-rotate-x="90" >
         <header>You can write to them too!</header>
         <pre class='prettyprint'>
 viewModel.Total=ko.computed({
@@ -208,7 +208,7 @@ viewModel.Total=ko.computed({
 
     </div>
 
-    <div id="text-binding" class="step demo" data-x="-10000" data-y="10000" data-scale=5>
+    <div id="text-binding" class="step demo" data-x="-5000" data-y="5000" data-scale=5>
         <header>Text Binding</header>
         <pre class="prettyprint code">
 var viewModel={
@@ -236,7 +236,7 @@ var viewModel={
     </div> 
 
 
-    <div id="value-binding" class="step demo" data-x="-5000" data-y="10000" data-scale=5>
+    <div id="value-binding" class="step demo" data-x="0" data-y="5000" data-scale=5>
         <header>Value Binding</header>
         <pre class="prettyprint code">
 var viewModel={
@@ -268,7 +268,7 @@ var viewModel={
         </script>
     </div> 
 
-    <div id="checked-and-visible-bindings" class="step demo" data-x="0" data-y="10000" data-scale=5>
+    <div id="checked-and-visible-bindings" class="step demo" data-x="5000" data-y="5000" data-scale=5>
         <header>Checked and Visible Bindings</header>
         <pre class="prettyprint code">
 var viewModel={
@@ -299,7 +299,7 @@ var viewModel={
         </script>
     </div> 
 
-    <div id="suck" class="step demo" data-x="0" data-y="10000" data-rotate-x="90" data-z ="1000" data-scale=1>
+    <div id="suck" class="step demo" data-x="5000" data-y="5000" data-rotate-x="90" data-z ="1000" data-scale=1>
         <header>Remember the haters?</header>
         <pre class="prettyprint code">
 var viewModel={
@@ -330,7 +330,7 @@ var viewModel={
         </script>
     </div> 
 
-    <div id="no-suck" class="step demo" data-x="0" data-y="10000" data-z="2000" data-rotate-x="90" data-scale=1>
+    <div id="no-suck" class="step demo" data-x="5000" data-y="5000" data-z="2000" data-rotate-x="90" data-scale=1>
         <header>Don't let them hate</header>
         <pre class="prettyprint code">
 var viewModel={
@@ -376,7 +376,7 @@ viewModel.IsOverdrawn=ko.computed(function(){
         </script>
     </div>
 
-    <div id="data-bind-the-rest" class="step slide" data-x="0" data-y="5000" data-scale=5>
+    <div id="data-bind-the-rest" class="step slide" data-x="10000" data-y="5000" data-scale=5>
         <header>There's WAY more</header>
             <ul>
                 <li>html</li><li>css</li><li>style</li><li>attr</li>
@@ -389,7 +389,7 @@ viewModel.IsOverdrawn=ko.computed(function(){
     </div>
 
     
-    <div id="overview" class="step" data-x="0" data-y="0" data-scale="20">
+    <div id="overview" class="step" data-x="0" data-y="-2500" data-scale="30">
     </div>
 
 </div>
