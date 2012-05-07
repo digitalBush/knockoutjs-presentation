@@ -95,6 +95,11 @@ ko.Name("digitalBush");
 
 //Get Value
 var who = ko.Name();
+
+//Manual Subscription
+viewModel.Name.subscribe(function(val) {
+    alert("I can haz new name: " + val);
+});
         </pre>
     </div>
 
