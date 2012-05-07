@@ -250,14 +250,9 @@ var viewModel={
 &lt;/div>
         </pre>
         <div class='result'>
-            <form class="form-horizontal">
-                <div class="control-group">
-                  <label class="control-label" for="input01">Text input</label>
-                  <div class="controls">
-                    <input class="input-xlarge" data-bind="value:Test" />
-                  </div>
-                </div>
-                
+            <form>
+                <label class="control-label" for="input01">Text input</label>
+                <input class="input-xlarge" data-bind="value:Test" />
             </form>
             <div data-bind="text:Test">
                 Starts with something else
@@ -304,36 +299,82 @@ var viewModel={
         </script>
     </div> 
 
-    <div id="no-suck" class="step demo" data-x="0" data-y="10000" data-rotate-x="90" >
+    <div id="suck" class="step demo" data-x="0" data-y="10000" data-rotate-x="90" data-z ="1000" data-scale=1>
         <header>Remember the haters?</header>
         <pre class="prettyprint code">
 var viewModel={
-    Balance:ko.observable(20.00)
+    Balance:ko.observable(20.00);
 };
         </pre>
         <pre class="prettyprint markup">
 &lt;label>Current Balance:&lt;/label>
 &lt;input data-bind="value:Balance" />
 &lt;!-- What comes next is NOT good -->
-&lt;div data-bind="visible:Balance() >=0 && Balance()<20">Low Balance!&lt;/div>
+&lt;div data-bind="visible:Balance() >=0 && Balance()&lt;20">Low Balance!&lt;/div>
 &lt;div data-bind="visible:Balance() &lt; 0">Overdrawn!&lt;/div>
         </pre>
         <div class='result'>
             <form>
             <label>Current Balance:</label><input data-bind="value:Balance" />
             </form>
-            <div data-bind="visible:Balance() >=0 && Balance()&lt;20">Low Balance!</div>
-            <div data-bind="visible:Balance() &lt; 0">Overdrawn!</div>
+            <div data-bind="visible:Balance() >=0 && Balance()<20">Low Balance!</div>
+            <div data-bind="visible:Balance() < 0">Overdrawn!</div>
         </div>
         <script>
             (function(){
                 var viewModel={
                     Balance:ko.observable(20.00)
                 };
-                ko.applyBindings(viewModel,document.getElementById('no-suck'));
+                ko.applyBindings(viewModel,document.getElementById('suck'));
             })()
         </script>
     </div> 
+
+    <div id="no-suck" class="step demo" data-x="0" data-y="10000" data-z="2000" data-rotate-x="90" data-scale=1>
+        <header>Don't let them hate</header>
+        <pre class="prettyprint code">
+var viewModel={
+    Balance:ko.observable(20.00)
+};
+
+viewModel.IsLowBalance=ko.computed(function(){
+    return this.Balance() >= 0 && 
+           this.Balance() < 20;
+},viewModel);
+
+viewModel.IsOverdrawn=ko.computed(function(){
+    return this.Balance() < 0;
+},viewModel);
+        </pre>
+        <pre class="prettyprint markup">
+&lt;label>Current Balance:&lt;/label>
+&lt;input data-bind="value:Balance" />
+&lt;div data-bind="visible:IsLowBalance">Low Balance!&lt;/div>
+&lt;div data-bind="visible:IsOverdrawn">Overdrawn!&lt;/div>
+        </pre>
+        <div class='result'>
+            <label>Current Balance:</label><input data-bind="value:Balance" />
+            <div data-bind="visible:IsLowBalance">Low Balance!</div>
+            <div data-bind="visible:IsOverdrawn">Overdrawn!</div>
+        </div>
+        <script>
+            (function(){
+                var viewModel={
+                    Balance:ko.observable(20.00)
+                };
+
+                viewModel.IsLowBalance=ko.computed(function(){
+                    return this.Balance() >=0 && this.Balance()<20
+                },viewModel);
+                
+                viewModel.IsOverdrawn=ko.computed(function(){
+                    return this.Balance() < 0;
+                },viewModel);
+
+                ko.applyBindings(viewModel,document.getElementById('no-suck'));
+            })()
+        </script>
+    </div>
 
     <div id="data-bind-the-rest" class="step slide" data-x="0" data-y="5000" data-scale=5>
         <header>There's WAY more</header>

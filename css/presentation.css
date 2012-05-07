@@ -23,6 +23,7 @@ header{
 	position:absolute;
 	bottom:20px;
 	right:20px;
+	font-size:48px;
 }
 
 /* Masthead (docs home) */
@@ -78,9 +79,9 @@ pre.prettyprint{
 
 .demo pre{
 	float:left;
-	width:400px;
+	width:550px;
 	margin-bottom:10px;
-	font-size:20px;
+	font-size:18px;
 	line-height:24px;
 }
 
@@ -96,7 +97,7 @@ pre.prettyprint{
 
 .demo div.result{
 	position:absolute;
-	width:400px;
+	width:300px;
 	right:0;
 	top:110px;
 	bottom:50px;
