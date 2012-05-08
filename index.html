@@ -506,8 +506,8 @@ viewModel.Phone.subscribe(function(val){
             (function(){
                 $("#addPhone").click(function(){
                     var template = $('#phoneNumberTemplate').html();
-                    $(Mustache.to_html(template))
-                        .appendTo("#phones");
+
+                    $(template).appendTo("#phones");
 
                     $("#phones input:last").mask("(999) 999-9999");
 
