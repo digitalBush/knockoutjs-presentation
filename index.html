@@ -389,9 +389,91 @@ viewModel.IsOverdrawn=ko.computed(function(){
                 <li>click</li><li>event</li><li>submit</li><li>enable</li><li>disable</li><li>hasFocus</li><li>options</li><li>selectedOptions</li><li>uniqueName</li>
                 <li>template</li>
             </ul>
-
-
     </div>
+    <script src="demo/lib/jquery.maskedinput-1.3.js"></script>
+    <script>
+        ko.bindingHandlers.mask = {
+            init: function(elm, valueAccessor, allBindingsAccessor, viewModel) {
+                var value = ko.utils.unwrapObservable(valueAccessor());
+                var allBindings = allBindingsAccessor();
+                var mask = allBindings.maskValue; 
+                $(elm)
+                .val(value)
+                .mask(mask)
+                .change(function(val){
+                    valueAccessor()($(this).mask());
+                });
+
+            },
+            update: function(elm, valueAccessor, allBindingsAccessor, viewModel) {
+                var value = ko.utils.unwrapObservable(valueAccessor());
+                $(elm).val(value).trigger("remask");
+            }
+        };
+    </script>
+
+    <div id="data-bind-custom" class="step" data-x="10000" data-y="5000" data-z="1000" data-rotate-x="90" data-scale=1>
+        <header>Custom Binding</header>
+        <pre class="prettyprint">
+ko.bindingHandlers.mask = {
+    init: function(elm, valueAccessor, allBindingsAccessor) {
+        var value = ko.utils.unwrapObservable(valueAccessor());
+        var allBindings = allBindingsAccessor();
+        var mask = allBindings.maskValue; 
+        $(elm).val(value).mask(mask)
+        .change(function(val){
+            valueAccessor()($(this).mask());
+        });
+    },
+    update: function(elm, valueAccessor, allBindingsAccessor) {
+        var value = ko.utils.unwrapObservable(valueAccessor());
+        $(elm).val(value).trigger("remask");
+    }
+};
+        </pre>
+    </div>
+
+    <div id="data-bind-custom-example" class="step demo" data-x="10000" data-y="5000" data-z="2000" data-rotate-x="90" data-scale=1>
+        <header>Custom Binding</header>
+        <pre class="prettyprint code">
+var viewModel={
+    Phone:ko.observable("6158675309"),
+    Dummy:function(){
+        this.Phone("5555555555");
+    }
+};
+
+ko.applyBindings(viewModel,document.getElementById("data-bind-custom-example"));
+
+viewModel.Phone.subscribe(function(val){
+    alert(val);
+});
+        </pre>
+        <pre class="prettyprint markup">
+&lt;label>Phone Number:&lt;/label>
+&lt;input data-bind="mask:Phone,maskValue:'(999) 999-9999'" />
+        </pre>
+        <div class='result'>
+            <label>Phone Number:</label>
+            <input data-bind="mask:Phone,maskValue:'(999) 999-9999'" />
+            <button data-bind="click:Dummy">(555) 555-5555</button>
+        </div>
+        <script>
+            (function(){
+                var viewModel={
+                    Phone:ko.observable("6158675309"),
+                    Dummy:function(){
+                        this.Phone("5555555555");
+                    }
+                };
+
+                ko.applyBindings(viewModel,document.getElementById("data-bind-custom-example"));
+
+                viewModel.Phone.subscribe(function(val){
+                    alert(val);
+                });
+            })()
+        </script>
 
     
     <div id="overview" class="step" data-x="0" data-y="-2500" data-scale="30">
