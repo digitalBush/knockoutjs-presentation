@@ -338,18 +338,18 @@ var viewModel={
     <div id="no-suck" class="step demo" data-x="5000" data-y="5000" data-z="2000" data-rotate-x="90" data-scale=1>
         <header>Don't let them hate</header>
         <pre class="prettyprint code">
-var viewModel={
+var vm={
     Balance:ko.observable(20.00)
 };
 
-viewModel.IsLowBalance=ko.computed(function(){
+vm.IsLowBalance=ko.computed(function(){
     return this.Balance() >= 0 && 
            this.Balance() < 20;
-},viewModel);
+},vm);
 
-viewModel.IsOverdrawn=ko.computed(function(){
+vm.IsOverdrawn=ko.computed(function(){
     return this.Balance() < 0;
-},viewModel);
+},vm);
         </pre>
         <pre class="prettyprint markup">
 &lt;label>Current Balance:&lt;/label>
@@ -417,23 +417,23 @@ viewModel.IsOverdrawn=ko.computed(function(){
         <pre class="prettyprint">
 ko.bindingHandlers.mask = {
     init: function(elm, valueAccessor, allBindingsAccessor) {
-        var value = ko.utils.unwrapObservable(valueAccessor());
+        var val = ko.utils.unwrapObservable(valueAccessor());
         var allBindings = allBindingsAccessor();
         var mask = allBindings.maskValue; 
-        $(elm).val(value).mask(mask)
+        $(elm).val(val).mask(mask)
         .change(function(val){
             valueAccessor()($(this).mask());
         });
     },
     update: function(elm, valueAccessor, allBindingsAccessor) {
-        var value = ko.utils.unwrapObservable(valueAccessor());
-        $(elm).val(value).trigger("remask");
+        var val = ko.utils.unwrapObservable(valueAccessor());
+        $(elm).val(val).trigger("remask");
     }
 };</pre>
     </div>
 
     <div id="data-bind-custom-example" class="step demo" data-x="-2000" data-y="10000" data-scale=5>
-        <header>Custom Binding</header>
+        <header>Custom Binding Usage</header>
         <pre class="prettyprint code">
 var viewModel={
     Phone:ko.observable("6158675309"),
@@ -441,8 +441,6 @@ var viewModel={
         this.Phone("5555555555");
     }
 };
-
-ko.applyBindings(viewModel,document.getElementById("data-bind-custom-example"));
 
 viewModel.Phone.subscribe(function(val){
     alert(val);
