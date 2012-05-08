@@ -429,8 +429,7 @@ ko.bindingHandlers.mask = {
         var value = ko.utils.unwrapObservable(valueAccessor());
         $(elm).val(value).trigger("remask");
     }
-};
-        </pre>
+};</pre>
     </div>
 
     <div id="data-bind-custom-example" class="step demo" data-x="-2000" data-y="10000" data-scale=5>
@@ -488,11 +487,45 @@ viewModel.Phone.subscribe(function(val){
         </p>
     </div>
 
+    <div id="data-bind-jQuery" class="step demo" data-x="14000" data-y="10000" data-scale=5>
+        <pre class="prettyprint code">
+
+        </pre>
+        <pre class="prettyprint markup">
+        </pre>
+        <div class='result'>
+            
+            <script type='text/template' id='phoneNumberTemplate'>
+                <li><input class='phone'/></li>
+            </script>
+            <label>Phone Numbers:</label>
+            <ul id="phones">
+            </ul>
+            <button id="addPhone">Add Phone</button>
+        </div>
+        <script src='demo/lib/mustache.js'></script>
+        <script>
+            (function(){
+                $("#addPhone").click(function(){
+                    var template = $('#phoneNumberTemplate').html();
+                    $(Mustache.to_html(template))
+                        .appendTo("#phones");
+
+                    $("#phones input:last").mask("(999) 999-9999");
+
+                });
+            })();
+        </script>
+
+    </div>
+
     
     <div id="overview" class="step" data-x="0" data-y="-2500" data-scale="30">
     </div>
 
 </div>
+
+
 
 <script src="js/impress.js"></script>
 <script src="js/prettify.js"></script>
