@@ -412,7 +412,7 @@ viewModel.IsOverdrawn=ko.computed(function(){
         };
     </script>
 
-    <div id="data-bind-custom" class="step" data-x="10000" data-y="5000" data-z="1000" data-rotate-x="90" data-scale=1>
+    <div id="data-bind-custom" class="step" data-x="-10000" data-y="10000" data-scale=5>
         <header>Custom Binding</header>
         <pre class="prettyprint">
 ko.bindingHandlers.mask = {
@@ -433,7 +433,7 @@ ko.bindingHandlers.mask = {
         </pre>
     </div>
 
-    <div id="data-bind-custom-example" class="step demo" data-x="10000" data-y="5000" data-z="2000" data-rotate-x="90" data-scale=1>
+    <div id="data-bind-custom-example" class="step demo" data-x="-2000" data-y="10000" data-scale=5>
         <header>Custom Binding</header>
         <pre class="prettyprint code">
 var viewModel={
@@ -474,6 +474,19 @@ viewModel.Phone.subscribe(function(val){
                 });
             })()
         </script>
+    </div>
+
+    <div id="data-bind-payoff" class="step slide" data-x="6000" data-y="10000" data-scale=5>
+        <header>What's the payoff?</header>
+        <ul>
+            <li>Behavior is encapsulated and re-usable.</li>
+            <li>No coupling to DOM layout.</li>
+            <li>No need to remember to attach behaviors.</li>
+        </ul>
+        <p>
+            <a href='http://www.flickr.com/photos/_flood_/6732863457/'><img src='img/remember.jpg' /></a>
+        </p>
+    </div>
 
     
     <div id="overview" class="step" data-x="0" data-y="-2500" data-scale="30">
