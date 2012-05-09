@@ -81,6 +81,8 @@ pre.prettyprint{
 	float:left;
 	width:600px;
 	margin-bottom:10px;
+	max-height:240px;
+	overflow-y:auto;
 }
 
 .demo .desc{

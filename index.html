@@ -486,31 +486,79 @@ viewModel.Phone.subscribe(function(val){
     </div>
 
     <div id="data-bind-jQuery" class="step demo" data-x="14000" data-y="10000" data-scale=5>
+        <header>jQuery Sample</header>
         <pre class="prettyprint code">
+$("#addPhone").click(function(){
+    var template = $('#tmpl').html();
+    $(template).appendTo("#phones");
+    $("#phones input:last").mask("(999) 999-9999");
+});
+
+$("#phones").on("click",".remove",function(){
+    $(this).parents("li").remove();
+});
+
+$("#save").click(function(){
+    var data=$("#phones input")
+    .map(function(){return this.value;})
+    .get();
+
+    alert("POST to server: "+JSON.stringify(data));
+});</pre>
+        <pre class="prettyprint markup">
+&lt;script type='text/template' id='tmpl'>
+    &lt;li>
+        &lt;input class='phone'/>
+        &lt;button class='remove'>
+            &lt;i class="icon-remove">&lt;/i>
+        &lt;/button>
+    &lt;/li>
+&lt;/script>
+&lt;label>Phone Numbers:&lt;/label>
+&lt;ul id="phones">
+&lt;/ul>
+&lt;button id="addPhone">Add Phone&lt;/button>
+&lt;p>
+    &lt;button id="save">Save&lt;/button>
+&lt;/p>
 
         </pre>
-        <pre class="prettyprint markup">
-        </pre>
         <div class='result'>
-            
-            <script type='text/template' id='phoneNumberTemplate'>
-                <li><input class='phone'/></li>
+            <script type='text/template' id='tmpl'>
+                <li>
+                    <input class='phone'/>
+                    <button class='remove'>
+                        <i class="icon-remove"></i>
+                    </button>
+                </li>
             </script>
             <label>Phone Numbers:</label>
             <ul id="phones">
             </ul>
             <button id="addPhone">Add Phone</button>
+            <p>
+                <button id="save">Save</button>
+            </p>
         </div>
-        <script src='demo/lib/mustache.js'></script>
         <script>
             (function(){
                 $("#addPhone").click(function(){
-                    var template = $('#phoneNumberTemplate').html();
-
+                    var template = $('#tmpl').html();
                     $(template).appendTo("#phones");
-
                     $("#phones input:last").mask("(999) 999-9999");
+                });
 
+                $("#phones").on("click",".remove",function(){
+                    $(this).parents("li").remove();
+                });
+
+                $("#save").click(function(){
+                    var data=$("#phones input")
+                    .map(function(){return this.value;})
+                    .get();
+
+
+                    alert("POST to server: "+JSON.stringify(data));
                 });
             })();
         </script>
