@@ -579,8 +579,8 @@ $("#save").click(function(){
             <label>Phone Numbers:</label>
             <ul data-bind="foreach:Phones">
                 <li>
-                    <input data-bind="mask:Phone, maskValue:'(999) 999-9999'" />
-                    <button data-bind='click:$parent.remove'>
+                    <input data-bind="mask:$parent.Phones()[$index()],maskValue:'(999) 999-9999'" />
+                    <button data-bind='click:$root.remove'>
                         <i class="icon-remove"></i>
                     </button>
                 </li>
@@ -595,14 +595,13 @@ $("#save").click(function(){
                 var viewModel={
                     Phones:ko.observableArray([]),
                     add:function(){
-                        this.Phones.push(ko.observable({Phone:ko.observable()}))
+                        this.Phones.push(ko.observable())
                     },
                     save:function(){
                         alert(ko.toJSON(this.Phones));
                     },
-                    remove:function(item){
-                        viewModel.Phones.remove(function(x){
-                            return x().Phone()==item.Phone();});
+                    remove:function(phone){
+                        viewModel.Phones.remove(function(item){return item()===phone;});
                     }
                 };
 
