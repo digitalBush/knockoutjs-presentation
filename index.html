@@ -21,7 +21,7 @@
     <link rel="shortcut icon" href="favicon.png" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
     <script src="demo/lib/jQuery/jquery.min.js"></script>
-    <script src="demo/lib/knockout/knockout-2.0.0.js"></script>
+    <script src="demo/lib/knockout/knockout-2.1.0.js"></script>
 </head>
 <body class="impress-not-supported">
 
@@ -401,6 +401,7 @@ vm.IsOverdrawn=ko.computed(function(){
                 .val(value)
                 .mask(mask)
                 .change(function(val){
+
                     valueAccessor()($(this).mask());
                 });
 
@@ -485,7 +486,7 @@ viewModel.Phone.subscribe(function(val){
         </p>
     </div>
 
-    <div id="data-bind-jQuery" class="step demo" data-x="14000" data-y="10000" data-scale=5>
+    <div id="jquery-sample" class="step demo" data-x="14000" data-y="10000" data-scale=5>
         <header>jQuery Sample</header>
         <pre class="prettyprint code">
 $("#addPhone").click(function(){
@@ -562,8 +563,57 @@ $("#save").click(function(){
                 });
             })();
         </script>
-
     </div>
+
+
+
+
+
+    <div id="knockout-sample" class="step demo" data-x="22000" data-y="10000" data-scale=5>
+        <header>The Knockout Version</header>
+        <pre class="prettyprint code">
+        </pre>
+        <pre class="prettyprint markup">
+        </pre>
+        <div class='result'>
+            <label>Phone Numbers:</label>
+            <ul data-bind="foreach:Phones">
+                <li>
+                    <input data-bind="mask:Phone, maskValue:'(999) 999-9999'" />
+                    <button data-bind='click:$parent.remove'>
+                        <i class="icon-remove"></i>
+                    </button>
+                </li>
+            </ul>
+            <button data-bind="click:add">Add Phone</button>
+            <p>
+                <button data-bind="click:save">Save</button>
+            </p>
+        </div>
+        <script>
+            (function(){
+                var viewModel={
+                    Phones:ko.observableArray([]),
+                    add:function(){
+                        this.Phones.push(ko.observable({Phone:ko.observable()}))
+                    },
+                    save:function(){
+                        alert(ko.toJSON(this.Phones));
+                    },
+                    remove:function(item){
+                        viewModel.Phones.remove(function(x){
+                            return x().Phone()==item.Phone();});
+                    }
+                };
+
+                ko.applyBindings(viewModel,document.getElementById("knockout-sample"));
+            })();
+        </script>
+    </div>
+
+
+
+
 
     
     <div id="overview" class="step" data-x="0" data-y="-2500" data-scale="30">
