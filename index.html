@@ -572,8 +572,33 @@ $("#save").click(function(){
     <div id="knockout-sample" class="step demo" data-x="22000" data-y="10000" data-scale=5>
         <header>The Knockout Version</header>
         <pre class="prettyprint code">
+var viewModel={
+    Phones:ko.observableArray([]),
+    add:function(){
+        this.Phones.push(ko.observable())
+    },
+    save:function(){
+        alert(ko.toJSON(this.Phones));
+    },
+    remove:function(phone){
+        viewModel.Phones.remove(function(item){return item()===phone;});
+    }
+};
         </pre>
         <pre class="prettyprint markup">
+&lt;label>Phone Numbers:&lt;/label>
+&lt;ul data-bind="foreach:Phones">
+    &lt;li>
+        &lt;input data-bind="mask:$parent.Phones()[$index()],maskValue:'(999) 999-9999'" />
+        &lt;button data-bind='click:$root.remove'>
+            &lt;i class="icon-remove">&lt;/i>
+        &lt;/button>
+    &lt;/li>
+&lt;/ul>
+&lt;button data-bind="click:add">Add Phone&lt;/button>
+&lt;p>
+    &lt;button data-bind="click:save">Save&lt;/button>
+&lt;/p>
         </pre>
         <div class='result'>
             <label>Phone Numbers:</label>
