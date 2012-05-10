@@ -134,7 +134,7 @@ var items=ko.Tags();
 
 
 
-    <div id="observable-array-example-2" class="step" data-x="0" data-y="0" data-z="-1000" data-rotate-x="90" data-scale=1>
+    <div id="observable-array-example-2" class="step" data-x="0" data-y="0" data-z="1000" data-rotate-x="90" data-scale=1>
         <header>Manipulating Observable Array Items</header>
         <pre class='prettyprint'>
 //New item on the end
@@ -151,7 +151,7 @@ viewModel.Tags.shift();
         </pre>
     </div>
 
-    <div id="observable-array-example-3" class="step" data-x="0" data-y="0" data-z="-2000" data-rotate-x="90" data-scale=1>
+    <div id="observable-array-example-3" class="step" data-x="0" data-y="0" data-z="2000" data-rotate-x="90" data-scale=1>
         <header>It keeps going...</header>
         <pre class='prettyprint'>
 //Reverse
@@ -186,7 +186,7 @@ viewModel.Tax=ko.computed(function(){
         </pre>
     </div>
 
-    <div id="computed-observable-example-cont" class="step" data-x="5000" data-y="0" data-z="-1000" data-rotate-x="90" >
+    <div id="computed-observable-example-cont" class="step" data-x="5000" data-y="0" data-z="1000" data-rotate-x="90" >
         <header>You can write to them too!</header>
         <pre class='prettyprint'>
 viewModel.Total=ko.computed({
@@ -197,8 +197,58 @@ viewModel.Total=ko.computed({
         this.Subtotal(value/1.0925)
     },
     owner: viewModel
-},viewModel);
+});
         </pre>
+    </div>
+
+    <div id="computed-observable-demo" class="step demo" data-x="5000" data-y="0" data-z="2000" data-rotate-x="90" >
+        <header>Let's see it work</header>
+<pre class="prettyprint code" style="max-height:480px !important">
+var viewModel={
+    Subtotal:ko.observable(5)
+};
+
+viewModel.Tax=ko.computed(function(){
+    return this.Subtotal()*0.0925;
+},viewModel);
+
+viewModel.Total=ko.computed({
+    read: function () {
+        return this.Subtotal() + this.Tax(); 
+    },
+    write: function (value) {
+        this.Subtotal(value/1.0925)
+    },
+    owner: viewModel
+});
+        </pre>
+        <div class='result'>
+            <input data-bind="value:Subtotal" />
+            <div data-bind="text:Tax"></div>
+            <input data-bind="value:Total" />
+        </div>
+        <script>
+            (function(){
+                var viewModel={
+                    Subtotal:ko.observable(5)
+                };
+
+                viewModel.Tax=ko.computed(function(){
+                    return this.Subtotal()*0.0925;
+                },viewModel);
+
+                viewModel.Total=ko.computed({
+                    read: function () {
+                        return this.Subtotal() + this.Tax(); 
+                    },
+                    write: function (value) {
+                        this.Subtotal(value/1.0925)
+                    },
+                    owner: viewModel
+                });
+                ko.applyBindings(viewModel,document.getElementById('computed-observable-demo'));
+            })()
+        </script>
     </div>
 
     <div id="data-bind" class="step slide" data-x="-10000" data-y="5000" data-scale=5>
@@ -217,24 +267,33 @@ viewModel.Total=ko.computed({
         <header>Text Binding</header>
         <pre class="prettyprint code">
 var viewModel={
-    Test:ko.observable("Text")
-};  
+    Date:ko.observable()
+};
+setInterval(function(){
+    viewModel.Date(new Date());
+},1000);  
+
+//I'll omit this on future slides for space
+ko.applyBindings(viewModel); //MAKE IT SO
         </pre>
         <pre class="prettyprint markup">
-&lt;div data-bind="text:Test">
+&lt;div data-bind="text:Date">
     Starts with something else
 &lt;/div>
         </pre>
         <div class='result'>
-            <div data-bind="text:Test">
+            <div data-bind="text:Date">
                 Starts with something else
             </div>
         </div>
         <script>
             (function(){
                 var viewModel={
-                    Test:ko.observable("Text")
+                    Date:ko.observable()
                 };
+                setInterval(function(){
+                    viewModel.Date(new Date());
+                },1000);
                 ko.applyBindings(viewModel,document.getElementById('text-binding'));
             })()
         </script>
@@ -338,18 +397,18 @@ var viewModel={
     <div id="no-suck" class="step demo" data-x="5000" data-y="5000" data-z="2000" data-rotate-x="90" data-scale=1>
         <header>Don't let them hate</header>
         <pre class="prettyprint code">
-var vm={
+var viewModel={
     Balance:ko.observable(20.00)
 };
 
-vm.IsLowBalance=ko.computed(function(){
+viewModel.IsLowBalance=ko.computed(function(){
     return this.Balance() >= 0 && 
            this.Balance() < 20;
-},vm);
+},viewModel);
 
-vm.IsOverdrawn=ko.computed(function(){
+viewModel.IsOverdrawn=ko.computed(function(){
     return this.Balance() < 0;
-},vm);
+},viewModel);
         </pre>
         <pre class="prettyprint markup">
 &lt;label>Current Balance:&lt;/label>
@@ -450,6 +509,7 @@ viewModel.Phone.subscribe(function(val){
         <pre class="prettyprint markup">
 &lt;label>Phone Number:&lt;/label>
 &lt;input data-bind="mask:Phone,maskValue:'(999) 999-9999'" />
+&lt;button data-bind="click:Dummy">(555) 555-5555&lt;/button>
         </pre>
         <div class='result'>
             <label>Phone Number:</label>
