@@ -255,9 +255,21 @@ viewModel.Total=ko.computed({
 });
         </pre>
         <div class='result'>
-            <input data-bind="value:Subtotal" />
-            <div data-bind="text:Tax"></div>
-            <input data-bind="value:Total" />
+            <form class="form-horizontal">
+                <div class="control-group">
+                    <label class='controlLabel'>Subtotal:</label>
+                    <div class='controls'><input data-bind="value:Subtotal" /></div>
+                </div>
+                <div class="control-group">
+                    <label class='controlLabel'>Tax:</label>
+                    <div class='controls'><span data-bind="text:Tax"></span></div>
+                </div>
+
+                <div class="control-group">
+                    <label class='controlLabel'>Total:</label>
+                    <div class='controls'><input data-bind="value:Total" /></div>
+                </div>
+            </form>
         </div>
         <script>
             (function(){
@@ -266,15 +278,15 @@ viewModel.Total=ko.computed({
                 };
 
                 viewModel.Tax=ko.computed(function(){
-                    return this.Subtotal()*0.0925;
+                    return (this.Subtotal()*0.0925).toFixed(2);
                 },viewModel);
 
                 viewModel.Total=ko.computed({
                     read: function () {
-                        return this.Subtotal() + this.Tax(); 
+                        return parseFloat(this.Subtotal()) + parseFloat(this.Tax()); 
                     },
                     write: function (value) {
-                        this.Subtotal(value/1.0925)
+                        this.Subtotal((value/1.0925).toFixed(2))
                     },
                     owner: viewModel
                 });

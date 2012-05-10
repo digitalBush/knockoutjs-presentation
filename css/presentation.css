@@ -60,6 +60,13 @@ header{
 
 #who-cares p.cite{float:right; padding-top:50px;}
 
+#computed-observable-demo form input{
+	width:60px;
+}
+#computed-observable-demo form span{
+	line-height:28px;
+}
+
 /* Masthead (docs home) */
 .slide {
   padding-top: 36px;
