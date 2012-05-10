@@ -91,10 +91,10 @@ var viewModel={
 };
 
 //Set Value
-ko.Name("digitalBush");
+viewModel.Name("digitalBush");
 
 //Get Value
-var who = ko.Name();
+var who = viewModel.Name();
 
 //Manual Subscription
 viewModel.Name.subscribe(function(val) {
@@ -128,7 +128,7 @@ var viewModel={
 };
 
 //Get Underlying Array
-var items=ko.Tags();
+var items=viewModel.Tags();
         </pre>
     </div>
 
