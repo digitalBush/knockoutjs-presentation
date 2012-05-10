@@ -605,7 +605,7 @@ $("#phones").on("click",".remove",function(){
 
 $("#save").click(function(){
     var data=$("#phones input")
-    .map(function(){return this.value;})
+    .map(function(){return $(this).mask();})
     .get();
 
     alert("POST to server: "+JSON.stringify(data));
@@ -659,7 +659,7 @@ $("#save").click(function(){
 
                 $("#save").click(function(){
                     var data=$("#phones input")
-                    .map(function(){return this.value;})
+                    .map(function(){return $(this).mask();})
                     .get();
 
                     alert("POST to server: "+JSON.stringify(data));
@@ -736,7 +736,7 @@ var viewModel={
                                 this.Phones(),
                                 function(item){return item.Number();}
                             ));
-                        alert(json);
+                        alert("POST to server: " + json);
                     },
                     remove:function(phone){
                         viewModel.Phones.remove(phone);
