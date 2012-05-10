@@ -574,13 +574,18 @@ $("#save").click(function(){
 var viewModel={
     Phones:ko.observableArray([]),
     add:function(){
-        this.Phones.push(ko.observable())
+        this.Phones.push({Number:ko.observable()});
     },
     save:function(){
-        alert(ko.toJSON(this.Phones));
+        var json=ko.toJSON(
+            ko.utils.arrayMap(
+                this.Phones(),
+                function(item){return item.Number();}
+            ));
+        alert(json);
     },
     remove:function(phone){
-        viewModel.Phones.remove(function(item){return item()===phone;});
+        viewModel.Phones.remove(phone);
     }
 };
         </pre>
@@ -588,7 +593,7 @@ var viewModel={
 &lt;label>Phone Numbers:&lt;/label>
 &lt;ul data-bind="foreach:Phones">
     &lt;li>
-        &lt;input data-bind="mask:$parent.Phones()[$index()],maskValue:'(999) 999-9999'" />
+        &lt;input data-bind="mask:Number,maskValue:'(999) 999-9999'" />
         &lt;button data-bind='click:$root.remove'>
             &lt;i class="icon-remove">&lt;/i>
         &lt;/button>
@@ -603,7 +608,7 @@ var viewModel={
             <label>Phone Numbers:</label>
             <ul data-bind="foreach:Phones">
                 <li>
-                    <input data-bind="mask:$parent.Phones()[$index()],maskValue:'(999) 999-9999'" />
+                    <input data-bind="mask:Number,maskValue:'(999) 999-9999'" />
                     <button data-bind='click:$root.remove'>
                         <i class="icon-remove"></i>
                     </button>
@@ -619,13 +624,18 @@ var viewModel={
                 var viewModel={
                     Phones:ko.observableArray([]),
                     add:function(){
-                        this.Phones.push(ko.observable())
+                        this.Phones.push({Number:ko.observable()});
                     },
                     save:function(){
-                        alert(ko.toJSON(this.Phones));
+                        var json=ko.toJSON(
+                            ko.utils.arrayMap(
+                                this.Phones(),
+                                function(item){return item.Number();}
+                            ));
+                        alert(json);
                     },
                     remove:function(phone){
-                        viewModel.Phones.remove(function(item){return item()===phone;});
+                        viewModel.Phones.remove(phone);
                     }
                 };
 
